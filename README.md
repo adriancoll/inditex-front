@@ -1,2 +1,1 @@
-# inditex-mid-senior-test
-Inditex mid senior technical test
+# Inditex techi interview project - Adrián Coll Suárez

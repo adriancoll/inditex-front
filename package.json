@@ -1,0 +1,31 @@
+{
+  "name": "inditex-mid-senior-test-monorepo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": "true",
+  "type": "module",
+  "workspaces": [
+    "app",
+    "api"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adriancoll/inditex-mid-senior-test.git"
+  },
+  "dependencies": {
+    "standard": "^17.0.0",
+    "prettier": "^2.8.4",
+    "eslint": "^8.34.0"
+  },
+  "keywords": [],
+  "author": "Adrian coll",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adriancoll/inditex-mid-senior-test/issues"
+  },
+  "homepage": "https://github.com/adriancoll/inditex-mid-senior-test#readme"
+}
