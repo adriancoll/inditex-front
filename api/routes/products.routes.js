@@ -1,4 +1,6 @@
 import { Router } from 'express'
+import { crudValidator } from '../middlewares/crud-validator.middleware.js'
+
 import {
   getProductDetail,
   getProducts,
@@ -6,7 +8,6 @@ import {
 
 export const productsRouter = Router()
 
-import { crudValidator } from '../middlewares/crud-validator.middleware.js'
 
 productsRouter.get('/:id', [crudValidator], getProductDetail)
 
