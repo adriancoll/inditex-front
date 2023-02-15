@@ -35,6 +35,9 @@ export class Server {
   }
 
   routes() {
+    // Ejecutar el build del frontend 
+    this.app.use(express.static('../app/dist'))
+
     this.app.use(this.productPath, productsRouter)
     this.app.use(this.cartPath, cartRouter)
   }
