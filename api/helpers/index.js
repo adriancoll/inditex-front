@@ -1,1 +1,0 @@
-export * as responses from './api-responses'

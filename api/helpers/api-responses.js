@@ -5,7 +5,7 @@
  * @param   {object | array} results
  * @param   {number} statusCode @default 200
  */
-const success = (message, results, statusCode = 200) => ({
+export const success = (message, results, statusCode = 200) => ({
   message,
   error: false,
   code: statusCode,
@@ -18,7 +18,7 @@ const success = (message, results, statusCode = 200) => ({
  * @param   {string} message
  * @param   {number} statusCode
  */
-const error = (message, statusCode, errors = null) => {
+export const error = (message, statusCode, errors = null) => {
   // List of common HTTP request code
   const codes = [200, 201, 400, 401, 404, 403, 422, 500]
 
@@ -35,3 +35,5 @@ const error = (message, statusCode, errors = null) => {
     ...errors,
   }
 }
+
+export default { error, success }

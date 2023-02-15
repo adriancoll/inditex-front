@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { cartController } from '../controllers'
+import { addProductToCart } from '../controllers/cart.controller.js'
 
 export const cartRouter = Router()
 
-cartRouter.post('/', cartController.addProductToCart)
+cartRouter.post('/', [],addProductToCart)

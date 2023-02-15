@@ -1,22 +1,20 @@
 import express from 'express'
 import cors from 'cors'
 
-import productRouter from './routes/products.routes'
-
-console.log('HOLAAAAAAAA');
+import { productsRouter } from '../routes/products.routes.js'
+import { cartRouter } from '../routes/cart.routes.js'
+import { dbConnection } from '../database/config.js'
 
 export class Server {
+  productPath = '/api/products'
+  cartPath = '/api/cart'
+
   constructor() {
     this.app = express()
     this.port = process.env.PORT
 
-
-    console.log(process.env.PORT);
-    this.productPath = '/api/product'
-    this.cartPath = '/api/cart'
-
     //conectar base de datos
-    // this.conectarDB()
+    this.conectarDB()
 
     //Middlewares
     this.middlewares()
@@ -24,9 +22,9 @@ export class Server {
     this.routes()
   }
 
-  // async conectarDB() {
-  //   await dbConnection()
-  // }
+  async conectarDB() {
+    await dbConnection()
+  }
 
   middlewares() {
     // Política de CORS
@@ -37,8 +35,8 @@ export class Server {
   }
 
   routes() {
-    this.app.use(this.productPath, productRouter)
-    // this.app.use(this.cartPath, require('../routes/cart.routes'))
+    this.app.use(this.productPath, productsRouter)
+    this.app.use(this.cartPath, cartRouter)
   }
 
   listen() {

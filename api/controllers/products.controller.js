@@ -5,6 +5,5 @@ export const getProducts = (req = request, res = response) => {
 }
 
 export const getProductDetail = (req = request, res = response) => {
-  console.log(req);
   return res.json('Product detail')
 }

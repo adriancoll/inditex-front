@@ -1,8 +1,13 @@
 import { Router } from 'express'
-import { productController } from '../controllers'
+import {
+  getProductDetail,
+  getProducts,
+} from '../controllers/products.controller.js'
 
 export const productsRouter = Router()
 
-productsRouter.get('/:id', productController.getProductDetail)
+import { crudValidator } from '../middlewares/crud-validator.middleware.js'
 
-productsRouter.get('/', productController.getProducts)
+productsRouter.get('/:id', [crudValidator], getProductDetail)
+
+productsRouter.get('/', [crudValidator], getProducts)
