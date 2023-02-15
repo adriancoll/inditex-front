@@ -1,7 +1,12 @@
+import { request, response } from 'express'
 import { validationResult } from 'express-validator'
-import responses  from '../helpers/api-responses.js'
+import responses from '../helpers/api-responses.js'
 
-export const crudValidator = (req, res, next) => {
+export const crudValidator = (
+  req = request,
+  res = response,
+  next
+) => {
   const errors = validationResult(req)
 
   if (!errors.isEmpty()) {
@@ -11,4 +16,3 @@ export const crudValidator = (req, res, next) => {
   // Si no hay errores pasamos al siguiente Middleware
   next()
 }
-
