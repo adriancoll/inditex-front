@@ -1,5 +1,6 @@
 export const CART_REDUCER_TYPES = {
-  addXToCart: 'Cart | Add X product to cart'
+  addXToCart: 'Cart | Add X product to cart',
+  loadCartFromCookies: 'Cart | Load Cart From Cookies'
 }
 
 export const cartReducer = (state, action) => {
@@ -7,7 +8,12 @@ export const cartReducer = (state, action) => {
     case CART_REDUCER_TYPES.addXToCart:
       return {
         ...state,
-        count: state.count + action.payload
+        count: Number(state.count) + action.payload
+      }
+    case CART_REDUCER_TYPES.loadCartFromCookies:
+      return {
+        ...state,
+        count: action.payload
       }
     default:
       return state
