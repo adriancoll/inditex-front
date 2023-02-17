@@ -19,7 +19,7 @@ export const ProductList = () => {
             .toLowerCase()
             .replace(/\s+/g, '')
             .includes(debouncedQuery.toLowerCase().replace(/\s+/g, ''))
-        )
+      )
 
   return (
     <div className='mx-auto max-w-2xl py-6 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 flex flex-col gap-8'>
