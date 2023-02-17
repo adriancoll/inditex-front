@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { ProductCard } from './ProductCard'
 import { useProducts } from '../../../hooks/useProducts'
 import { ProductSearchBar } from './ProductSearchBar'
-import { Transition } from '@headlessui/react'
 import { useDebounce } from '../../../hooks'
 
 export const ProductList = () => {
@@ -45,7 +44,9 @@ export const ProductList = () => {
             </div>
           ) : null}
 
-          {filteredProducts.length === 0 ? <p>No se han encontrado productos</p> : null}
+          {filteredProducts.length === 0 ? (
+            <p>No se han encontrado productos</p>
+          ) : null}
         </div>
       </div>
     </div>
