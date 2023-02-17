@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const instance = axios.create({ baseURL: 'http://localhost:3001/api/cart' })
+const instance = axios.create({ baseURL: `${import.meta.env.VITE_API_URL}/api/cart` })
 
 /**
  * Checks if the product can be added to the API and returns the count of product

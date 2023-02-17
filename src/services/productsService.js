@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const instance = axios.create({ baseURL: 'http://localhost:3001/api/products' })
+const instance = axios.create({ baseURL: `${import.meta.env.VITE_API_URL}/api/products` })
 
 /**
  * Get all products from API
