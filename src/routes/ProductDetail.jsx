@@ -14,8 +14,8 @@ import { useLoaderData } from 'react-router-dom'
 import { productService } from '../services'
 
 export const loader = async ({ params }) => {
-  const { productId } = params
-  const { results } = await productService.getProductDetail(productId)
+  const { slug } = params
+  const { results } = await productService.getProductDetail(slug)
   const { product } = results
 
   return { product }
@@ -89,7 +89,11 @@ export const ProductDetail = () => {
               </h3>
               <ul className='list-disc list-inside'>
                 {Object.entries({
-                  ...{ brand: product.brand, model: product.model, price: product.price },
+                  ...{
+                    brand: product.brand,
+                    model: product.model,
+                    price: product.price
+                  },
                   ...product.specification
                 }).map(([spec, value]) => (
                   <li key={spec}>
@@ -140,8 +144,7 @@ export const ProductDetail = () => {
                     colorSelected,
                     storageSelected,
                     setAddedToCartSuccessfully
-                  )
-                }
+                  )}
                 type='submit'
                 className={classNames(
                   'disabled:cursor-not-allowed disabled:opacity-50',

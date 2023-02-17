@@ -5,7 +5,7 @@ export const MainLayout = ({ children }) => {
     <div className='w-full pt-16'>
       <Header />
       {children}
-      {/* {process.env.NODE_ENV === 'development' ? <Debugger /> : null} */}
+      {process.env.NODE_ENV === 'development' ? <Debugger /> : null}
     </div>
   )
 }

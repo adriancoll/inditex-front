@@ -16,7 +16,11 @@ export const routes = [
         element: <ProductList />
       },
       {
-        path: '/products/:productId',
+        path: '/products',
+        element: <ProductList />
+      },
+      {
+        path: '/products/:slug',
         loader: productLoader,
         element: <ProductDetail />
       }

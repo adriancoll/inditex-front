@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
-export const ProductCard = ({ product }) => {
+export function ProductCard ({ product }) {
   return (
-    <Link to={`products/${product._id}`} className='group'>
+    <Link to={`/products/${product.slug}`} className='group'>
       <div className='aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8'>
         <img
           src={product.image}
@@ -19,4 +20,14 @@ export const ProductCard = ({ product }) => {
       </p>
     </Link>
   )
+}
+
+ProductCard.propTypes = {
+  product: {
+    slug: PropTypes.string,
+    brand: PropTypes.string,
+    model: PropTypes.string,
+    image: PropTypes.string,
+    price: PropTypes.number
+  }
 }

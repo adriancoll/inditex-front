@@ -30,3 +30,20 @@
     background-color: #f9f9f9;
   }
 }
+
+@layer components {
+  .breadcrumbs {
+    @apply flex justify-center items-center max-w-2xl mx-4;
+  }
+
+  .crumb {
+    @apply flex truncate text-ellipsis max-w-xs items-center justify-center mr-2 after:ml-2 last:after:hidden after:text-center;
+  }
+  .crumb::after {
+    content: ">";
+  }
+
+  .crumb a {
+    @apply text-gray-400 hover:text-white transition capitalize;
+  }
+}

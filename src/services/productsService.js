@@ -12,7 +12,7 @@ export const getAll = async () => {
 }
 
 /**
- * Get product detail from API
+ * Get product detail from API by slug
  * @returns Product
  */
 export const getProductDetail = async (productId) => {
