@@ -1,2 +1,2 @@
-export * as cartService from  './cartService'
-export * as productService from  './productsService'
+export * as cartService from './cartService'
+export * as productService from './productsService'

@@ -44,6 +44,8 @@ export const ProductList = () => {
               </button>
             </div>
           ) : null}
+
+          {filteredProducts.length === 0 ? <p>No se han encontrado productos</p> : null}
         </div>
       </div>
     </div>

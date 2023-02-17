@@ -8,7 +8,5 @@ export const useProducts = () => {
     throw new Error('Comprueba el proveedor de los productos!')
   }
 
-
-
   return { ...context }
 }

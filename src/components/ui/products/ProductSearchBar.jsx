@@ -2,14 +2,14 @@ import React from 'react'
 
 export const ProductSearchBar = ({ query, setQuery }) => {
   return (
-    <div>
+    <div className='flex justify-end'>
       <label
         htmlFor='search'
         className='mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white'
       >
         Buscar
       </label>
-      <div className='relative w-full lg:w-1/3'>
+      <div className='relative w-full lg:w-1/3 '>
         <div className='absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none'>
           <svg
             aria-hidden='true'
@@ -24,11 +24,11 @@ export const ProductSearchBar = ({ query, setQuery }) => {
               strokeLinejoin='round'
               strokeWidth='2'
               d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
-            ></path>
+            />
           </svg>
         </div>
         <input
-          onChange={ev => setQuery(ev.target.value)}
+          onChange={(ev) => setQuery(ev.target.value)}
           type='search'
           id='search'
           value={query}

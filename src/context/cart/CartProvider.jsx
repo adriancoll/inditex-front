@@ -38,7 +38,10 @@ export const CartProvider = ({ children }) => {
         storageCode
       })
 
-      dispatch({ type: CART_REDUCER_TYPES.addXToCart, payload: data.results.count })
+      dispatch({
+        type: CART_REDUCER_TYPES.addXToCart,
+        payload: data.results.count
+      })
 
       callback(true)
     } catch (err) {

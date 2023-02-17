@@ -1,13 +1,10 @@
 import { Disclosure, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { classNames } from '../../utils/classNames'
 import { Cart } from '../Cart'
 import { BreadCrumb } from './BreadCrumb'
 import { Link, useLocation } from 'react-router-dom'
 
 export const Header = () => {
-  const location = useLocation()
-
   return (
     <Disclosure
       as='nav'
@@ -68,7 +65,7 @@ export const Header = () => {
             leaveFrom='transform scale-100 opacity-100'
             leaveTo='transform scale-95 opacity-0'
           >
-            <Disclosure.Panel  className='sm:hidden'>
+            <Disclosure.Panel className='sm:hidden'>
               <div className='space-y-1 px-2 pt-2 pb-3'>
                 <BreadCrumb />
               </div>

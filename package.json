@@ -6,7 +6,11 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "lint": "vite preview",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "lint": "npm run format:write && npm run format:check && npm run lint:fix && npm run lint:check",
     "test": "todo: tests"
   },
   "dependencies": {

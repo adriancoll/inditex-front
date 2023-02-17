@@ -13,7 +13,6 @@ import { ProductOptionsSelect } from '../components/ui/products'
 import { useLoaderData } from 'react-router-dom'
 import { productService } from '../services'
 
-
 export const loader = async ({ params }) => {
   const { productId } = params
   const { results } = await productService.getProductDetail(productId)
@@ -22,8 +21,7 @@ export const loader = async ({ params }) => {
   return { product }
 }
 
-const getTheFirstIfOnlyOption = (option) =>
-  option.length === 1 ? 0 : ''
+const getTheFirstIfOnlyOption = (option) => (option.length === 1 ? 0 : -1)
 
 export const ProductDetail = () => {
   const { product } = useLoaderData()
@@ -41,13 +39,20 @@ export const ProductDetail = () => {
 
   const { addToCart } = useCart()
 
+  console.log({
+    colorSelected,
+    storageSelected,
+    both: storageSelected >= 0 && colorSelected >= 0
+  })
+
   const getErrorLabel = useCallback(() => {
     // si no tengo almacenamiento ni color
-    if (storageSelected === undefined && colorSelected === undefined)
+    if (storageSelected === -1 && colorSelected === -1) {
       return 'Debes seleccionar un color y capacidad!'
+    }
 
     return `Debes seleccionar ${
-      storageSelected === undefined ? 'capacidad!' : 'un color'
+      storageSelected === -1 ? 'capacidad!' : 'un color'
     }`
   })
 
@@ -82,8 +87,8 @@ export const ProductDetail = () => {
               {/* Sizes */}
               <div className='mt-10'>
                 <div className='flex items-center justify-start gap-1'>
-                  <SparklesIcon className='h-4 w-4' /> Colores
-                  <h3 className='text-sm font-medium text-gray-200'></h3>
+                  <SparklesIcon className='h-4 w-4' />
+                  <h3 className='text-sm font-medium text-gray-200'>Colores</h3>
                 </div>
 
                 {/* selector de almacenamiento */}
@@ -97,8 +102,10 @@ export const ProductDetail = () => {
               {/* Sizes */}
               <div className='mt-10'>
                 <div className='flex items-center justify-start gap-1'>
-                  <CircleStackIcon className='h-4 w-4' /> Almacenamiento
-                  <h3 className='text-sm font-medium text-gray-200'></h3>
+                  <CircleStackIcon className='h-4 w-4' />
+                  <h3 className='text-sm font-medium text-gray-200'>
+                    Almacenamiento
+                  </h3>
                 </div>
                 {/* selector de almacenamiento */}
                 <ProductOptionsSelect

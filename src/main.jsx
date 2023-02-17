@@ -7,8 +7,6 @@ import { CartProvider } from './context/cart'
 
 import { router } from './navigation/router'
 
-
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ProductProvider>

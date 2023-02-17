@@ -21,7 +21,7 @@ export const ProductOptionsSelect = ({
         )
 
   return (
-    <div className='w-72'>
+    <div className='lg:w-72 w-full'>
       <Combobox value={selected} onChange={onChange}>
         <div className='relative mt-1'>
           <div className='relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-300 sm:text-sm'>
