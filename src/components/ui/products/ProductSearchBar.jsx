@@ -1,4 +1,4 @@
-import React from 'react'
+import PropTypes from 'prop-types'
 
 export const ProductSearchBar = ({ query, setQuery, disabled = false }) => {
   return (
@@ -40,4 +40,8 @@ export const ProductSearchBar = ({ query, setQuery, disabled = false }) => {
       </div>
     </div>
   )
+}
+
+ProductSearchBar.propTypes = {
+  query: PropTypes.string
 }

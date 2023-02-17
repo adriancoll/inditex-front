@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { httpProxy } from '../utils/httpProxy'
 
-const instance = axios.create({ baseURL: `${import.meta.env.VITE_API_URL}/api/products` })
+const instance = httpProxy('/api/products')
 
 /**
  * Get all products from API

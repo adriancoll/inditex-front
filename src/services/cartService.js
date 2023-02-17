@@ -1,6 +1,6 @@
-import axios from 'axios'
+import { httpProxy } from '../utils/httpProxy'
 
-const instance = axios.create({ baseURL: `${import.meta.env.VITE_API_URL}/api/cart` })
+const instance = httpProxy('/api/cart')
 
 /**
  * Checks if the product can be added to the API and returns the count of product
