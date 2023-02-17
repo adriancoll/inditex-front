@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-export function ProductCard ({ product }) {
+export function ProductCard({ product }) {
   return (
     <Link to={`/products/${product.slug}`} className='group'>
       <div className='aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8'>
@@ -20,14 +20,4 @@ export function ProductCard ({ product }) {
       </p>
     </Link>
   )
-}
-
-ProductCard.propTypes = {
-  product: {
-    slug: PropTypes.string,
-    brand: PropTypes.string,
-    model: PropTypes.string,
-    image: PropTypes.string,
-    price: PropTypes.number
-  }
 }

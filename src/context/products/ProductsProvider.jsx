@@ -4,8 +4,10 @@ import { productService } from '../../services'
 import Cookies from 'js-cookie'
 
 const PRODUCT_INITIAL_STATE = {
-  products: []
+  products: [],
+  loading: false
 }
+
 export const COOKIE_PRODUCTS_KEY = 'products'
 
 export const ProductProvider = ({ children }) => {
@@ -13,6 +15,8 @@ export const ProductProvider = ({ children }) => {
 
   const loadProducts = async () => {
     try {
+      dispatch({ type: PRODUCT_REDUCER_TYPES.startLoading })
+
       const cookieProducts = Cookies.get(COOKIE_PRODUCTS_KEY)
         ? JSON.parse(Cookies.get(COOKIE_PRODUCTS_KEY))
         : []
@@ -36,11 +40,14 @@ export const ProductProvider = ({ children }) => {
         type: PRODUCT_REDUCER_TYPES.loadProductsFromAPI,
         payload: data.results
       })
+      dispatch({ type: PRODUCT_REDUCER_TYPES.stopLoading })
     } catch (error) {
       dispatch({
         type: PRODUCT_REDUCER_TYPES.loadProductsFromCookies,
         payload: []
       })
+    } finally {
+      dispatch({ type: PRODUCT_REDUCER_TYPES.stopLoading })
     }
   }
 

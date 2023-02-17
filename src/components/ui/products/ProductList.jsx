@@ -1,16 +1,18 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { ProductCard } from './ProductCard'
 import { useProducts } from '../../../hooks/useProducts'
 import { ProductSearchBar } from './ProductSearchBar'
 import { useDebounce } from '../../../hooks'
 import { Transition } from '@headlessui/react'
 import { FolderMinusIcon, FunnelIcon } from '@heroicons/react/24/outline'
+import { ProductCartSkeleton } from './ProductCartSkeleton'
 
 export const ProductList = () => {
   const [query, setQuery] = useState('')
+  /** Debounce al query para optimizar el filtro */
   const debouncedQuery = useDebounce(query, 300)
 
-  const { products } = useProducts()
+  const { products, loading: loadingProducts } = useProducts()
 
   const filteredProducts =
     debouncedQuery === ''
@@ -20,7 +22,7 @@ export const ProductList = () => {
             .toLowerCase()
             .replace(/\s+/g, '')
             .includes(debouncedQuery.toLowerCase().replace(/\s+/g, ''))
-      )
+        )
 
   return (
     <div className='mx-auto max-w-2xl py-6 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 flex flex-col gap-8'>
@@ -31,8 +33,9 @@ export const ProductList = () => {
       />
 
       <div>
-        <h2 className='sr-only'>Dispositivos móviles</h2>
+        {loadingProducts && <ProductCartSkeleton />}
 
+        <h2 className='sr-only'>Dispositivos móviles</h2>
         <Transition
           show={filteredProducts.length > 0}
           enter='transition-opacity duration-75'
@@ -50,7 +53,7 @@ export const ProductList = () => {
         </Transition>
 
         <Transition
-          show={filteredProducts.length === 0 && query !== ''}
+          show={!loadingProducts && filteredProducts.length === 0 && query !== ''}
           enter='transition-opacity duration-75'
           enterFrom='opacity-0'
           enterTo='opacity-100'
@@ -74,9 +77,8 @@ export const ProductList = () => {
             </button>
           </div>
         </Transition>
-
         <Transition
-          show={filteredProducts.length === 0 && query === ''}
+          show={!loadingProducts && filteredProducts.length === 0 && query === ''}
           enter='transition-opacity duration-75'
           enterFrom='opacity-0'
           enterTo='opacity-100'
