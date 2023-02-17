@@ -83,12 +83,28 @@ export const ProductDetail = () => {
               {product.price} €
             </p>
 
+            <div className='mt-10 px-4 py-2 border border-gray-400/50 rounded-md'>
+              <h3 className='font-semibold text-lg border-b border-inherit mb-2 text-gray-200'>
+                Descripción
+              </h3>
+              <ul className='list-disc list-inside'>
+                {Object.entries({
+                  ...{ brand: product.brand, model: product.model, price: product.price },
+                  ...product.specification
+                }).map(([spec, value]) => (
+                  <li key={spec}>
+                    <strong className='capitalize'>{spec}</strong>: {value}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             <div className='mt-10'>
               {/* Sizes */}
               <div className='mt-10'>
                 <div className='flex items-center justify-start gap-1'>
                   <SparklesIcon className='h-4 w-4' />
-                  <h3 className='text-sm font-medium text-gray-200'>Colores</h3>
+                  <h3 className='font-semibold text-gray-200'>Colores</h3>
                 </div>
 
                 {/* selector de almacenamiento */}
@@ -103,7 +119,7 @@ export const ProductDetail = () => {
               <div className='mt-10'>
                 <div className='flex items-center justify-start gap-1'>
                   <CircleStackIcon className='h-4 w-4' />
-                  <h3 className='text-sm font-medium text-gray-200'>
+                  <h3 className='font-semibold text-gray-200'>
                     Almacenamiento
                   </h3>
                 </div>
