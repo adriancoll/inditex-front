@@ -33,7 +33,7 @@ export const ProductList = () => {
             <ProductCard product={product} key={product._id} />
           ))}
 
-          {filteredProducts.length === 0 ? (
+          {filteredProducts.length === 0 && query !== '' ? (
             <div className='flex items-center justify-center flex-col text-center gap-4'>
               <p>
                 No se han encontrado productos con el nombre/marca{' '}
