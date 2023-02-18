@@ -5,7 +5,7 @@ import { ProductSearchBar } from './ProductSearchBar'
 import { useDebounce } from '../../../hooks'
 import { Transition } from '@headlessui/react'
 import { FolderMinusIcon, FunnelIcon } from '@heroicons/react/24/outline'
-import { ProductCartSkeleton } from './ProductCartSkeleton'
+import { ProductCardSkeleton } from './ProductCardSkeleton'
 
 export const ProductList = () => {
   const [query, setQuery] = useState('')
@@ -33,7 +33,7 @@ export const ProductList = () => {
       />
 
       <div>
-        {loadingProducts && <ProductCartSkeleton />}
+        {loadingProducts && <ProductCardSkeleton />}
 
         <h2 className='sr-only'>Dispositivos móviles</h2>
         <Transition

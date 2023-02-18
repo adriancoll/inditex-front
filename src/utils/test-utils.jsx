@@ -28,16 +28,13 @@ export { customRender as render }
         <Route path='/' element={<SomeComponent />} />
       </Routes>,
       // Ruta donde empieza
-      { wrapper: (prop) => wrapper(['/'], prop) }
+      { wrapper: (props) => wrapper({ ...props, initialEntries: ['/'] }) }
     )
  * ```
  * @param {String[]} initialEntries Usado para inidicar al router en que ruta empieza el test
  * @param {Render props} renderProps
  * @returns JSX.Element
  */
-export const wrapperWithRouter = ({ children, initialEntries }) => {
-  if (!initialEntries)
-    return <MemoryRouter initialEntries={['/']}>{children}</MemoryRouter>
-
-  return <MemoryRouter initialEntries={initialEntries}>{children}</MemoryRouter>
-}
+export const wrapperWithRouter = ({ children, initialEntries = ['/'] }) => (
+  <MemoryRouter initialEntries={initialEntries}>{children}</MemoryRouter>
+)

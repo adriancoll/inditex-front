@@ -12,6 +12,7 @@
     "lint:fix": "eslint --fix .",
     "lint": "npm run format:write && npm run format:check && npm run lint:fix && npm run lint:check",
     "test": "vitest",
+    "test:coverage": "npm test -- --coverage",
     "test:ui": "vitest --ui"
   },
   "dependencies": {
@@ -45,6 +46,7 @@
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
+    "@vitest/coverage-c8": "^0.28.5",
     "autoprefixer": "^10.4.13",
     "babel-jest": "^29.4.3",
     "eslint-plugin-react": "^7.32.2",
