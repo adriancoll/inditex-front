@@ -6,7 +6,7 @@ export const Cart = () => {
   const { count } = useCart()
 
   return (
-    <div className='relative'>
+    <div aria-label='cart' className='relative'>
       <button
         type='button'
         className=' p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const ProductCartSkeleton = () => {
+export const ProductCardSkeleton = () => {
   return (
     <div className='grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8'>
       {[...Array(8).keys()].map((_) => (
@@ -22,10 +22,10 @@ export const ProductCartSkeleton = () => {
           </div>
           <div className='w-full mt-4'>
             <div className='flex w-full justify-between items-center'>
-              <div className='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-40 mb-4'></div>
-              <div className='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-20 mb-2.5'></div>
+              <div className='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-40 mb-4' />
+              <div className='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-20 mb-2.5' />
             </div>
-            <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-12'></div>
+            <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-12' />
           </div>
           <span className='sr-only'>Loading...</span>
         </div>

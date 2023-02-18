@@ -10,6 +10,7 @@ export const Header = () => {
   return (
     <Disclosure
       as='nav'
+      aria-label='header'
       className='bg-gray-800/90 fixed top-0 left-0 right-0 backdrop-blur-md z-50'
     >
       {({ open }) => (
@@ -29,7 +30,12 @@ export const Header = () => {
                 )}
               </div>
               <div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
-                <Link to='/' className='flex flex-shrink-0 items-center gap-2'>
+                <Link
+                  to='/'
+                  role='link'
+                  aria-label='logo-icon'
+                  className='flex flex-shrink-0 items-center gap-2'
+                >
                   <span className='blockrotate-1 animate-pulse'>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'

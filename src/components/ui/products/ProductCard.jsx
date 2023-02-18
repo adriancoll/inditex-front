@@ -12,7 +12,10 @@ export function ProductCard({ product }) {
           className='h-full w-full object-cover object-center group-hover:opacity-75'
         />
       </div>
-      <h3 className='mt-4 text-sm text-gray-200'>
+      <h3
+        aria-label='product-brand-and-model'
+        className='mt-4 text-sm text-gray-200'
+      >
         {product.brand} | {product.model}
       </h3>
       <p className='mt-1 text-lg font-medium text-indigo-400'>
