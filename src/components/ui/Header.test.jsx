@@ -1,5 +1,8 @@
-import { getByLabelText, render } from '@testing-library/react'
-import { userEvent, wrapperWithRouter } from '../../utils/test-utils'
+import {
+  customProviderRender,
+  userEvent,
+  wrapperWithRouter
+} from '../../utils/test-utils'
 
 import Header from './Header'
 import { CartContext } from '../../context/cart'
@@ -8,23 +11,10 @@ import { Outlet, Route, Routes } from 'react-router-dom'
 const logoAndTitleLabel = 'logo-icon'
 const breadcrumbsLabel = 'breadcrumbs'
 
-/**
- * A custom render to setup providers. Extends regular
- * render options with `providerProps` to allow injecting
- * different scenarios to test with.
- *
- * @see https://testing-library.com/docs/react-testing-library/setup#custom-render
- */
-const customRender = (ui, { providerProps, ...renderOptions }) => {
-  return render(
-    <CartContext.Provider {...providerProps}>{ui}</CartContext.Provider>,
-    renderOptions
-  )
-}
-
 describe('<Header />', () => {
   test('Renders the header', () => {
-    const { getByLabelText, getByText } = customRender(
+    const { getByLabelText, getByText } = customProviderRender(
+      CartContext,
       <Routes>
         <Route path='/' element={<Header />} />
       </Routes>,
@@ -37,7 +27,7 @@ describe('<Header />', () => {
     )
 
     // Cart
-    expect(getByLabelText(/cart/i)).toHaveTextContent(/1/i)
+    expect(getByLabelText('cart')).toHaveTextContent('1')
 
     getByLabelText(/logo-icon/i)
     getByText(/DeviApp/i)
@@ -49,7 +39,8 @@ describe('<Header />', () => {
 
     const productPageContent = <h1>Hello im in products</h1>
 
-    const { getByLabelText, getByText } = customRender(
+    const { getByLabelText, getByText } = customProviderRender(
+      CartContext,
       <Routes>
         <Route
           path='/'

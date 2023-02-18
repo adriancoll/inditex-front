@@ -1,6 +1,6 @@
 import { Disclosure, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { Cart } from '../Cart'
+import { Cart } from './Cart'
 import { BreadCrumb } from './BreadCrumb'
 import { Link, useLocation } from 'react-router-dom'
 

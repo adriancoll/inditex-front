@@ -1,23 +1,10 @@
 // import { Header, Debugger } from '../ui'
 
-import { getByLabelText, render } from '@testing-library/react'
-import { wrapperWithRouter } from '../../utils/test-utils'
+import { render } from '@testing-library/react'
+import { customProviderRender, wrapperWithRouter } from '../../utils/test-utils'
 import { MainLayout } from './MainLayout'
 import { CartContext } from '../../context/cart'
 import { Route, Routes } from 'react-router-dom'
-
-/**
- * A custom render to setup providers. Extends regular
- * render options with `providerProps` to allow injecting
- * different scenarios to test with.
- *
- * @see https://testing-library.com/docs/react-testing-library/setup#custom-render
- */
-const customRender = (ui, { providerProps, ...renderOptions }) =>
-  render(
-    <CartContext.Provider {...providerProps}>{ui}</CartContext.Provider>,
-    renderOptions
-  )
 
 describe('<MainLayout />', () => {
   const headerLabel = 'header'
@@ -33,7 +20,8 @@ describe('<MainLayout />', () => {
   })
 
   test('Renders <Header/>', () => {
-    const { getByLabelText } = customRender(
+    const { getByLabelText } = customProviderRender(
+      CartContext,
       <Routes>
         <Route path='/' element={<MainLayout />} />
       </Routes>,

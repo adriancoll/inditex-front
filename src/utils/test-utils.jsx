@@ -38,3 +38,21 @@ export { customRender as render }
 export const wrapperWithRouter = ({ children, initialEntries = ['/'] }) => (
   <MemoryRouter initialEntries={initialEntries}>{children}</MemoryRouter>
 )
+
+/**
+ * A custom render to setup providers. Extends regular
+ * render options with `providerProps` to allow injecting
+ * different scenarios to test with.
+ *
+ * @see https://testing-library.com/docs/react-testing-library/setup#custom-render
+ */
+export const customProviderRender = (
+  context,
+  ui,
+  { providerProps, ...renderOptions }
+) => {
+  return render(
+    <context.Provider {...providerProps}>{ui}</context.Provider>,
+    renderOptions
+  )
+}
