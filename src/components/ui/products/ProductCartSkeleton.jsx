@@ -25,7 +25,6 @@ export const ProductCartSkeleton = () => {
               <div className='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-40 mb-4'></div>
               <div className='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-20 mb-2.5'></div>
             </div>
-            <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-12'></div>
           </div>
           <span className='sr-only'>Loading...</span>
         </div>
