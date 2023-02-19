@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useState } from 'react'
+import { Fragment, useState } from 'react'
 import { Combobox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
@@ -14,11 +14,11 @@ export const ProductOptionsSelect = ({
     query === ''
       ? options
       : options.filter((option) =>
-          String(option.name)
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .includes(query.toLowerCase().replace(/\s+/g, ''))
-        )
+        String(option.name)
+          .toLowerCase()
+          .replace(/\s+/g, '')
+          .includes(query.toLowerCase().replace(/\s+/g, ''))
+      )
 
   return (
     <div className='lg:w-72 w-full'>
@@ -30,8 +30,7 @@ export const ProductOptionsSelect = ({
               displayValue={(selectedIndex) =>
                 options[selectedIndex]
                   ? `${options[selectedIndex]} ${sufix}`
-                  : 'Selecciona una opción'
-              }
+                  : 'Selecciona una opción'}
               onChange={(event) => setQuery(event.target.value)}
             />
             <Combobox.Button className='absolute inset-y-0 right-0 flex items-center pr-2'>
@@ -60,8 +59,7 @@ export const ProductOptionsSelect = ({
                     className={({ active }) =>
                       `relative cursor-default select-none py-2 pl-10 pr-4 ${
                         active ? 'bg-indigo-600 text-white' : 'text-gray-900'
-                      }`
-                    }
+                      }`}
                     value={optionIndex}
                   >
                     {({ selected, active }) => (

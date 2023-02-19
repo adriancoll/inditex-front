@@ -45,8 +45,6 @@ describe('<ProductCard />', () => {
   })
 
   test('renders all necessary properties', () => {
-    renderInstance.debug()
-
     const imageComponent = screen.getByRole('img')
 
     expect(imageComponent).toHaveAttribute('src', mockedProduct.image)
