@@ -1,17 +1,6 @@
-import { useCallback, useState } from 'react'
-
-import {
-  CheckBadgeIcon,
-  CircleStackIcon,
-  SparklesIcon
-} from '@heroicons/react/20/solid'
-
-import { useCart } from '../hooks'
-import { classNames } from '../utils/classNames'
-
-import { ProductOptionsSelect } from '../components/ui/products'
 import { useLoaderData } from 'react-router-dom'
 import { productService } from '../services'
+import { AddProductForm } from '../components/ui/products/AddProductForm'
 
 export const loader = async ({ params }) => {
   const { slug } = params
@@ -21,40 +10,8 @@ export const loader = async ({ params }) => {
   return { product }
 }
 
-const getTheFirstIfOnlyOption = (option) => (option.length === 1 ? 0 : -1)
-
 export const ProductDetail = () => {
   const { product } = useLoaderData()
-
-  const [storageSelected, setStorageSelected] = useState(
-    getTheFirstIfOnlyOption(product.storage)
-  )
-  const [colorSelected, setColorSelected] = useState(
-    getTheFirstIfOnlyOption(product.colors)
-  )
-
-  const [addedToCartSuccessfully, setAddedToCartSuccessfully] = useState(false)
-
-  const canAddToCart = colorSelected >= 0 && storageSelected >= 0
-
-  const { addToCart } = useCart()
-
-  console.log({
-    colorSelected,
-    storageSelected,
-    both: storageSelected >= 0 && colorSelected >= 0
-  })
-
-  const getErrorLabel = useCallback(() => {
-    // si no tengo almacenamiento ni color
-    if (storageSelected === -1 && colorSelected === -1) {
-      return 'Debes seleccionar un color y capacidad!'
-    }
-
-    return `Debes seleccionar ${
-      storageSelected === -1 ? 'capacidad!' : 'un color'
-    }`
-  })
 
   return (
     <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 mt-4'>
@@ -104,65 +61,7 @@ export const ProductDetail = () => {
             </div>
 
             <div className='mt-10'>
-              {/* Sizes */}
-              <div className='mt-10'>
-                <div className='flex items-center justify-start gap-1'>
-                  <SparklesIcon className='h-4 w-4' />
-                  <h3 className='font-semibold text-gray-200'>Colores</h3>
-                </div>
-
-                {/* selector de almacenamiento */}
-                <ProductOptionsSelect
-                  selected={colorSelected}
-                  onChange={setColorSelected}
-                  options={product.colors}
-                />
-              </div>
-
-              {/* Sizes */}
-              <div className='mt-10'>
-                <div className='flex items-center justify-start gap-1'>
-                  <CircleStackIcon className='h-4 w-4' />
-                  <h3 className='font-semibold text-gray-200'>
-                    Almacenamiento
-                  </h3>
-                </div>
-                {/* selector de almacenamiento */}
-                <ProductOptionsSelect
-                  selected={storageSelected}
-                  sufix='GB'
-                  onChange={setStorageSelected}
-                  options={product.storage}
-                />
-              </div>
-
-              <button
-                disabled={!canAddToCart}
-                onClick={() =>
-                  addToCart(
-                    product._id,
-                    colorSelected,
-                    storageSelected,
-                    setAddedToCartSuccessfully
-                  )}
-                type='submit'
-                className={classNames(
-                  'disabled:cursor-not-allowed disabled:opacity-50',
-                  'max-w mt-10 flex gap-2 transition z-0 w-full items-center justify-center rounded-md border border-transparent duration-200 py-3 px-8 text-base font-medium text-white  focus:outline-none focus:ring-2  focus:ring-offset-2',
-                  addedToCartSuccessfully
-                    ? 'bg-green-500 hover:bg-green-700 pointer-events-none focus:ring-green-500 opacity-75 cursor-not-allowed'
-                    : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500'
-                )}
-              >
-                {canAddToCart
-                  ? addedToCartSuccessfully
-                    ? 'Añadido al carrito correctamente'
-                    : 'Añadir al carrito'
-                  : getErrorLabel()}
-                {addedToCartSuccessfully ? (
-                  <CheckBadgeIcon className='h-5 w-5' />
-                ) : null}
-              </button>
+              <AddProductForm product={product} />
             </div>
           </div>
         </div>

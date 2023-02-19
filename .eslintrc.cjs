@@ -17,6 +17,7 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     'multiline-ternary': 0,
     'no-undef': 0,
-    curly: 0
+    curly: 0,
+    'react/prop-types': 0
   }
 }
