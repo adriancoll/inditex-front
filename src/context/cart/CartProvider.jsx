@@ -30,7 +30,7 @@ export const CartProvider = ({ children }) => {
     })
   }
 
-  const addToCart = async (id, colorCode, storageCode, callback) => {
+  const addToCart = async ({ id, colorCode, storageCode }, callback) => {
     try {
       const data = await cartService.updateCart({
         id,
@@ -38,14 +38,16 @@ export const CartProvider = ({ children }) => {
         storageCode
       })
 
+      console.log({ updateCart: data });
+
       dispatch({
         type: CART_REDUCER_TYPES.addXToCart,
         payload: data.results.count
       })
 
-      callback(true)
+      callback && callback(true)
     } catch (err) {
-      callback(false)
+      callback && callback(false)
     }
   }
 
