@@ -3,17 +3,16 @@ import {
   customProviderRender,
   screen,
   fireEvent,
-  waitFor,
-  render,
-  wrapperWithRouter
+  waitFor
 } from '../../../utils/test-utils'
-import { AddProductForm } from '.'
-import { CartContext } from '../../../context/cart'
 import {
   ProductMock,
   AddProductFormMock
 } from '../../../_mocks_/AddProductForm.mock'
-import { Header } from '../Header'
+
+import { AddProductForm } from '.'
+import { CartContext } from '../../../context/cart'
+
 
 describe('<AddProductForm />', () => {
   let renderInstance

@@ -1,6 +1,4 @@
-import PropTypes from 'prop-types'
-
-export const ProductSearchBar = ({ query, setQuery, disabled = false }) => {
+export const ProductSearchBar = ({ query, onChange, disabled = false }) => {
   return (
     <div className='flex justify-end'>
       <label
@@ -28,11 +26,11 @@ export const ProductSearchBar = ({ query, setQuery, disabled = false }) => {
           </svg>
         </div>
         <input
-          onChange={(ev) => setQuery(ev.target.value)}
+          onChange={onChange}
           type='search'
           id='search'
           disabled={disabled}
-          value={query}
+          defaultValue={query}
           className='transition disabled:cursor-not-allowed disabled:opacity-50 block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
           placeholder='Buscar...'
           required
@@ -40,8 +38,4 @@ export const ProductSearchBar = ({ query, setQuery, disabled = false }) => {
       </div>
     </div>
   )
-}
-
-ProductSearchBar.propTypes = {
-  query: PropTypes.string
 }

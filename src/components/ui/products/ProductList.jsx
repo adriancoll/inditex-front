@@ -1,24 +1,22 @@
 import React, { useState } from 'react'
 import { ProductCard } from './ProductCard'
-import { useProducts } from '../../../hooks/useProducts'
 import { ProductSearchBar } from './ProductSearchBar'
 import { useDebounce } from '../../../hooks'
 import { Transition } from '@headlessui/react'
 import { FolderMinusIcon, FunnelIcon } from '@heroicons/react/24/outline'
 import { ProductCardSkeletonList } from './ProductCardSkeletonList'
 
-export const ProductList = () => {
+export const ProductList = ({ products = [], loading = false }) => {
   const [query, setQuery] = useState('')
+
   /** Debounce al query para optimizar el filtro */
   const debouncedQuery = useDebounce(query, 300)
-
-  const { products, loading: loadingProducts } = useProducts()
 
   const filteredProducts =
     debouncedQuery === ''
       ? products
       : products.filter((product) =>
-          `${product.brand}${product.model}`
+          `${product.brand} ${product.model}`
             .toLowerCase()
             .replace(/\s+/g, '')
             .includes(debouncedQuery.toLowerCase().replace(/\s+/g, ''))
@@ -27,17 +25,23 @@ export const ProductList = () => {
   return (
     <div className='mx-auto max-w-2xl py-6 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 flex flex-col gap-8'>
       <ProductSearchBar
-        disabled={products.length === 0}
+        disabled={products.length === 0 || loading}
         query={query}
-        setQuery={setQuery}
+        onChange={(event) => setQuery(event.target.value)}
       />
 
+      {debouncedQuery !== '' && (
+        <p className='text-gray-300' aria-label='search-results'>
+          Resultados de la búsqueda: "<strong>{debouncedQuery}</strong>"
+        </p>
+      )}
+
       <div>
-        {loadingProducts && <ProductCardSkeletonList />}
+        {loading && <ProductCardSkeletonList />}
 
         <h2 className='sr-only'>Dispositivos móviles</h2>
         <Transition
-          show={filteredProducts.length > 0}
+          show={filteredProducts.length > 0 && !loading}
           enter='transition-opacity duration-75'
           enterFrom='opacity-0'
           enterTo='opacity-100'
@@ -53,7 +57,7 @@ export const ProductList = () => {
         </Transition>
 
         <Transition
-          show={!loadingProducts && filteredProducts.length === 0 && query !== ''}
+          show={!loading && filteredProducts.length === 0 && query !== ''}
           enter='transition-opacity duration-75'
           enterFrom='opacity-0'
           enterTo='opacity-100'
@@ -78,7 +82,7 @@ export const ProductList = () => {
           </div>
         </Transition>
         <Transition
-          show={!loadingProducts && filteredProducts.length === 0 && query === ''}
+          show={!loading && filteredProducts.length === 0 && query === ''}
           enter='transition-opacity duration-75'
           enterFrom='opacity-0'
           enterTo='opacity-100'

@@ -1,9 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom'
 
 import { Root } from '../routes/Root'
-import ErrorPage from '../error-page'
 import ProductDetail, { loader as productLoader } from '../routes/ProductDetail'
-import { ProductList } from '../components/ui/products/ProductList'
+import { ProductsPage } from '../routes/ProductsPage'
+import ErrorPage from '../error-page'
 
 export const routes = [
   {
@@ -13,11 +13,11 @@ export const routes = [
     children: [
       {
         path: '/',
-        element: <ProductList />
+        element: <ProductsPage />
       },
       {
         path: '/products',
-        element: <ProductList />
+        element: <ProductsPage />
       },
       {
         path: '/products/:slug',
