@@ -3,9 +3,7 @@ import { cleanup, render } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { afterEach } from 'vitest'
 
-afterEach(() => {
-  cleanup()
-})
+afterEach(cleanup)
 
 const customRender = (ui, options = {}) =>
   render(ui, {
