@@ -66,11 +66,6 @@ describe('<ProductList /> loading states', () => {
     expect(renderInstance.getByText(/Loading.../i)).toBeInTheDocument()
   })
 
-  //   it('should have search input disabled while loading', () => {
-  //     renderInstance.getByPlaceholder(/Buscar.../i)
-  //     renderInstance.debug()
-  //   })
-
   it('should disable search input on products loading', () => {
     expect(renderInstance).toBeTruthy()
   })
