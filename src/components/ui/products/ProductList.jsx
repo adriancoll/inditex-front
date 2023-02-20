@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import { ProductCard } from './ProductCard'
 import { ProductSearchBar } from './ProductSearchBar'
 import { useDebounce } from '../../../hooks'
@@ -12,7 +12,7 @@ export const ProductList = ({ products = [], loading = false }) => {
   /** Debounce al query para optimizar el filtro */
   const debouncedQuery = useDebounce(query, 300)
 
-  const clearQuery = useCallback(() => setQuery(''))
+  const clearQuery = () => setQuery('')
 
   const filteredProducts =
     debouncedQuery === ''
@@ -78,7 +78,10 @@ export const ProductList = ({ products = [], loading = false }) => {
                 <strong>{query}</strong>"
               </p>
             </div>
-            <button onClick={clearQuery} className='bg-indigo-600 text-white font-bold w-fit px-6 py-2 rounded-lg'>
+            <button
+              onClick={clearQuery}
+              className='bg-indigo-600 text-white font-bold w-fit px-6 py-2 rounded-lg'
+            >
               Limpiar búsqueda
             </button>
           </div>
