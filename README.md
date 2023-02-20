@@ -1,4 +1,4 @@
-# 🚀 DeviApp - Backend
+# 🚀 DeviApp - Frontend
 
 DeviApp, project developed for BCNC Group.
 
