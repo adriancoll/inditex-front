@@ -12,7 +12,6 @@ Access the demo at [here](https://inditex-frontend.vercel.app/)
 - [Technologies](#technologies)
 - [Setup](#setup)
 - [Tests](#tests)
-- [Postman](#postman)
 - [Deployment](#deployment)
 - [Approach](#approach)
 - [Credits](#credits)
@@ -20,17 +19,35 @@ Access the demo at [here](https://inditex-frontend.vercel.app/)
 
 ## Screenshots
 
+Products page
 
+![Products page](https://i.imgur.com/EEcUJkj.png)
+
+Product detail page
+
+![Product detail page](https://i.imgur.com/ibQt02c.png)
+
+Product Add to cart
+
+![Product add to cart](https://i.imgur.com/7ZOyvb1.png)
+
+Loading products
+
+![Loading products](https://i.imgur.com/Gfn8fB6.png)
+
+Empty products list
+
+![Empty products list](https://i.imgur.com/ur6zZ5D.png)
 
 ## About The App
 
-`DeviApp - Frontend` is a development for the application at BCNC group developed with by Adrián Coll ❤️
+`DeviApp - Frontend` is a smartphone shop for BCNC group developed with by Adrián Coll ❤️
 
 The project handles a lists of smartphones and its cart using `ContextAPI` and some custom `hooks`.
 
 ## Technologies
 
-I used `Vite` as the packager, with `ReactJS` without typescript for faster development.
+I used [`Vite`]('vitejs.dev') as the packager, with `ReactJS` without typescript for faster development.
 
 📚 Some libraries i used:
 
@@ -78,10 +95,6 @@ npm test
 ```
 
 > Take a brief look at `./utils/test-utils.tsx`
-
-## Postman
-
-Take a look to the public API at [postman docs](https://documenter.getpostman.com/view/15939676/2s93CHvvqz).
 
 ## Deployment
 
